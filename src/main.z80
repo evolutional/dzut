@@ -1,0 +1,28 @@
+	DEVICE ZXSPECTRUMNEXT
+	SLDOPT COMMENT WPMEM, LOGPOINT, ASSERTION
+
+code_start:	.equ $C000
+	.org code_start
+
+init:
+	di
+
+	; do stuff here
+
+main:
+	ei
+.loop:
+
+	jr .loop
+
+	include "player.z80"
+
+code_length	 .equ $-code_start+1
+
+	cspectmap "build/dzut.map"
+
+	savenex open "build/dzut.nex", code_start
+	savenex core 3,1,0
+	savenex cfg 3
+	savenex auto
+	savenex close

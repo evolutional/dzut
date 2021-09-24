@@ -1,0 +1,48 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "cspect",
+            "remoteType": "cspect",
+            "cspect": {
+                "port": 11000
+            },
+            "commandsAfterLaunch": [
+                "-logpoint enable",
+                "-assertion enable",
+                //"-sprites",
+                //"-patterns"
+            ],
+            "disassemblerArgs": {
+                "esxdosRst": true
+            },
+            "sjasmplus": [
+                {
+                    "path": "build/dzut.sld.txt"
+                }
+            ],
+            "rootFolder": "${workspaceFolder}",
+            "load": "build/dzut.nex"
+        },
+
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "Unit Tests",
+            "unitTests": true,
+            "remoteType": "zsim",
+            "disassemblerArgs": {
+                "esxdosRst": true
+            },
+            "sjasmplus": [
+                {
+                    "path": "build/dzut_tests.sld.txt",
+                }
+            ],
+            "rootFolder": "${workspaceFolder}",
+            "load": "build/dzut_tests.nex"
+        },
+    ]
+}

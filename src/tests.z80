@@ -1,0 +1,31 @@
+	DEVICE ZXSPECTRUMNEXT
+	SLDOPT COMMENT WPMEM, LOGPOINT, ASSERTION
+	
+	include "unit_tests.inc"
+
+tests_start:
+
+	UNITTEST_INITIALIZE
+
+	ret
+
+	MODULE TestSuite_Bob
+
+UT_example:
+	call player_init
+
+	nop ; HL == $CDCD
+TC_END
+
+	ENDMODULE
+
+	include "player.z80"
+
+
+	cspectmap "build/dzut_tests.map"
+
+	savenex open "build/dzut_tests.nex", tests_start
+	savenex core 3,1,0
+	savenex cfg 3
+	savenex auto
+	savenex close

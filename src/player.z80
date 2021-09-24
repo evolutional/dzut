@@ -1,0 +1,4 @@
+
+player_init:
+	ld hl,$CDCD
+	ret
